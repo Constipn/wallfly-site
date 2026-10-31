@@ -1320,3 +1320,47 @@ em {
     transition:none!important;
   }
 }
+
+/* Legal pages (Impressum, Datenschutz) */
+.legal {
+  max-width:720px;
+  padding-block:24px 72px;
+}
+
+.legal h1 {
+  font-family:var(--serif);
+  font-weight:400;
+  font-size:39px;
+  line-height:1.18;
+  letter-spacing:-1px;
+  margin:0 0 24px;
+}
+
+.legal h2 {
+  font-size:17px;
+  font-weight:600;
+  margin:36px 0 8px;
+}
+
+.legal p,.legal ul {
+  margin:0 0 14px;
+}
+
+.legal ul {
+  padding-left:22px;
+}
+
+.legal a {
+  text-decoration:underline;
+  text-underline-offset:2px;
+}
+
+.legal a:hover {
+  color:var(--red);
+}
+
+.legal-date {
+  margin-top:36px;
+  color:var(--muted);
+  font-size:13px;
+}
