@@ -1,6 +1,6 @@
 /* Set these when ready. While a value is empty, its links stay hidden. */
-const DOWNLOAD_URL = ''; // Public HTTPS release URL or a relative DMG path.
-const GITHUB_URL = '';   // Public repository URL, e.g. https://github.com/<user>/wallfly
+const DOWNLOAD_URL = 'https://github.com/Constipn/wallflyAI/releases/latest/download/Wallfly.dmg'; // Public HTTPS release URL or a relative DMG path.
+const GITHUB_URL = 'https://github.com/Constipn/wallflyAI';   // Public repository URL, e.g. https://github.com/<user>/wallfly
 
 (() => {
   const tabs = [...document.querySelectorAll('.demo-tab')];
