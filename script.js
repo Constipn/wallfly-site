@@ -22,6 +22,11 @@ const GITHUB_URL = '';   // Public repository URL, e.g. https://github.com/<user
   const noteLines = [...noteList.children];
   const listening = appWindow.querySelector('.recording-listening');
   const conversation = appWindow.querySelector('.recording-conversation');
+  const transcriptCard = appWindow.querySelector('.recording-transcript');
+  const transcriptToggle = appWindow.querySelector('.recording-transcript-heading');
+  const transcriptContent = document.getElementById('recording-transcript-content');
+  const recordingTabs = [...appWindow.querySelectorAll('.recording-note-tabs [role="tab"]')];
+  const waveBars = [...appWindow.querySelector('.recording-wave').children];
   const turns = [...appWindow.querySelectorAll('.recording-turn')];
   const transcript = [
     { start: 900, text: "Let's make the first five minutes feel effortless." },
@@ -35,6 +40,9 @@ const GITHUB_URL = '';   // Public repository URL, e.g. https://github.com/<user
   const cycleDuration = recordingStart + 15000;
   let elapsed = 0;
   let lastFrame = performance.now();
+  let transcriptExpanded = null;
+  let manualRecording = false;
+  let keyboardNavigation = false;
 
   function selectTab(index) {
     tabs.forEach((tab, i) => {
@@ -55,10 +63,30 @@ const GITHUB_URL = '';   // Public repository URL, e.g. https://github.com/<user
   function typed(text, time, start, speed = 35) {
     return text.slice(0, Math.max(0, Math.floor((time - start) / speed)));
   }
+  function selectRecordingTab(index) {
+    recordingTabs.forEach((tab, i) => {
+      tab.setAttribute('aria-selected', String(i === index));
+      tab.tabIndex = i === index ? 0 : -1;
+      document.getElementById(tab.getAttribute('aria-controls')).hidden = i !== index;
+    });
+  }
+  function renderTranscript(time) {
+    // Show a little of the conversation, then give the space back to the notes.
+    const expanded = transcriptExpanded ?? time < 5200;
+    transcriptCard.classList.toggle('is-collapsed', !expanded);
+    transcriptToggle.setAttribute('aria-expanded', String(expanded));
+    transcriptContent.inert = !expanded;
+    transcriptContent.setAttribute('aria-hidden', String(!expanded));
+  }
   function renderDemo() {
     const recording = elapsed >= recordingStart;
+    const wasRecording = !overlay.hidden;
     overlay.hidden = !recording;
     appBody.inert = recording;
+    if (recording && !wasRecording) {
+      transcriptExpanded = null;
+      selectRecordingTab(0);
+    }
     newNoteButtons.forEach(button => {
       button.setAttribute('aria-expanded', String(recording));
       button.classList.toggle('demo-clicked', elapsed >= clickStart && !recording);
@@ -82,8 +110,10 @@ const GITHUB_URL = '';   // Public repository URL, e.g. https://github.com/<user
     }
     if (!recording) return;
     const time = elapsed - recordingStart;
+    renderTranscript(time);
     setText(recordingTitle, time < 2500 ? 'New note' : 'Product team sync');
-    setText(recordingTime, `00:${String(Math.floor(time / 1000)).padStart(2, '0')}`);
+    const seconds = Math.floor(time / 1000);
+    setText(recordingTime, `${String(Math.floor(seconds / 60)).padStart(2, '0')}:${String(seconds % 60).padStart(2, '0')}`);
     placeholder.hidden = time >= 2800;
     noteList.hidden = time < 2800;
     setText(noteLines[0], typed('Simpler onboarding. Focus on the first five minutes.', time, 2800));
@@ -102,8 +132,7 @@ const GITHUB_URL = '';   // Public repository URL, e.g. https://github.com/<user
       }
     });
     if (changed) conversation.scrollTop = conversation.scrollHeight;
-    const wave = appWindow.querySelector('.recording-wave');
-    [...wave.children].forEach((bar, index) => {
+    waveBars.forEach((bar, index) => {
       bar.style.height = `${4 + Math.abs(Math.sin(time / 230 + index * 1.4)) * 13}px`;
     });
   }
@@ -111,6 +140,7 @@ const GITHUB_URL = '';   // Public repository URL, e.g. https://github.com/<user
   function chooseTab(index) {
     elapsed = 0;
     paused = true;
+    manualRecording = false;
     selectTab(index);
     renderDemo();
     updatePause();
@@ -130,12 +160,31 @@ const GITHUB_URL = '';   // Public repository URL, e.g. https://github.com/<user
     });
   });
   newNoteButtons.forEach(button => button.addEventListener('click', () => {
-    elapsed = recordingStart + 12000;
-    paused = true;
+    elapsed = recordingStart;
+    manualRecording = true;
+    paused = motionPreference.matches;
+    lastFrame = performance.now();
     renderDemo();
     updatePause();
     appWindow.querySelector('.demo-close-recording').focus({ preventScroll: true });
   }));
+  transcriptToggle.addEventListener('click', () => {
+    transcriptExpanded = transcriptToggle.getAttribute('aria-expanded') !== 'true';
+    renderTranscript(elapsed - recordingStart);
+  });
+  recordingTabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => selectRecordingTab(index));
+    tab.addEventListener('keydown', event => {
+      let next;
+      if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') next = 1 - index;
+      else if (event.key === 'Home') next = 0;
+      else if (event.key === 'End') next = recordingTabs.length - 1;
+      else return;
+      event.preventDefault();
+      selectRecordingTab(next);
+      recordingTabs[next].focus();
+    });
+  });
   function closeRecording() {
     const restoreFocus = overlay.contains(document.activeElement);
     chooseTab(1);
@@ -151,15 +200,18 @@ const GITHUB_URL = '';   // Public repository URL, e.g. https://github.com/<user
   });
   pauseButton.addEventListener('click', () => { paused = !paused; lastFrame = performance.now(); updatePause(); });
   motionPreference.addEventListener('change', event => { paused = event.matches; lastFrame = performance.now(); updatePause(); });
+  document.addEventListener('keydown', event => { if (event.key === 'Tab') keyboardNavigation = true; });
+  document.addEventListener('pointerdown', () => { keyboardNavigation = false; }, true);
   renderDemo();
   updatePause();
 
-  // All content is fictional and local. Hidden pages and keyboard focus suspend playback.
+  // Mouse interaction keeps playback running; keyboard navigation holds the view steady.
   function animate(now) {
     const delta = now - lastFrame;
     lastFrame = now;
-    if (!paused && !document.hidden && !appWindow.contains(document.activeElement)) {
-      elapsed = (elapsed + Math.min(delta, 100)) % cycleDuration;
+    if (!paused && !document.hidden && !(keyboardNavigation && appWindow.contains(document.activeElement))) {
+      const nextElapsed = elapsed + Math.min(delta, 100);
+      elapsed = manualRecording ? nextElapsed : nextElapsed % cycleDuration;
       renderDemo();
     }
     window.requestAnimationFrame(animate);
