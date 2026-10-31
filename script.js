@@ -11,15 +11,30 @@ const GITHUB_URL = '';   // Public repository URL, e.g. https://github.com/<user
   const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
   let paused = motionPreference.matches;
 
-  // Autoplay tells the product story: rough notes -> transcript -> enhanced notes.
-  // Tab indexes: 0 = My Notes, 1 = Enhanced Notes, 2 = Transcript.
-  const sequence = [
-    { tab: 0, seconds: 3 },
-    { tab: 2, seconds: 3 },
-    { tab: 1, seconds: 6 }
+  const appBody = appWindow.querySelector('.app-body');
+  const newNoteButtons = [...appWindow.querySelectorAll('[aria-controls="demo-recording"]')];
+  const overlay = appWindow.querySelector('.demo-recording-overlay');
+  const cursor = appWindow.querySelector('.demo-cursor');
+  const recordingTitle = document.getElementById('demo-recording-title');
+  const recordingTime = appWindow.querySelector('.recording-indicator time');
+  const placeholder = appWindow.querySelector('.recording-placeholder');
+  const noteList = appWindow.querySelector('.recording-notes ul');
+  const noteLines = [...noteList.children];
+  const listening = appWindow.querySelector('.recording-listening');
+  const conversation = appWindow.querySelector('.recording-conversation');
+  const turns = [...appWindow.querySelectorAll('.recording-turn')];
+  const transcript = [
+    { start: 900, text: "Let's make the first five minutes feel effortless." },
+    { start: 4000, text: 'Agreed. We can test the updated flow together on Friday.' },
+    { start: 7500, text: "I’ll put together a first draft of the new flow." }
   ];
-  let step = sequence.length - 1; // The page opens on Enhanced Notes.
+  // Overview for 2 s, pointer movement and click, then the live recording window.
+  const pointerStart = 2000;
+  const clickStart = 2900;
+  const recordingStart = 3150;
+  const cycleDuration = recordingStart + 15000;
   let elapsed = 0;
+  let lastFrame = performance.now();
 
   function selectTab(index) {
     tabs.forEach((tab, i) => {
@@ -34,12 +49,70 @@ const GITHUB_URL = '';   // Public repository URL, e.g. https://github.com/<user
     pauseButton.setAttribute('aria-pressed', String(paused));
     pauseButton.innerHTML = paused ? '<span aria-hidden="true">▷</span> Play demo' : '<span aria-hidden="true">Ⅱ</span> Pause demo';
   }
-  // A manual tab choice stops autoplay, so the visitor keeps what they picked.
+  function setText(element, value) {
+    if (element.textContent !== value) element.textContent = value;
+  }
+  function typed(text, time, start, speed = 35) {
+    return text.slice(0, Math.max(0, Math.floor((time - start) / speed)));
+  }
+  function renderDemo() {
+    const recording = elapsed >= recordingStart;
+    overlay.hidden = !recording;
+    appBody.inert = recording;
+    newNoteButtons.forEach(button => {
+      button.setAttribute('aria-expanded', String(recording));
+      button.classList.toggle('demo-clicked', elapsed >= clickStart && !recording);
+    });
+    const moving = elapsed >= pointerStart && !recording;
+    cursor.hidden = !moving;
+    if (moving) {
+      const button = newNoteButtons.find(button => button.getClientRects().length);
+      if (button) {
+        const frame = appWindow.getBoundingClientRect();
+        const target = button.getBoundingClientRect();
+        const progress = Math.min(1, (elapsed - pointerStart) / (clickStart - pointerStart));
+        const ease = progress * progress * (3 - 2 * progress);
+        const startX = frame.width * .72;
+        const startY = frame.height * .7;
+        const endX = target.left - frame.left + target.width * .52;
+        const endY = target.top - frame.top + target.height * .55;
+        const scale = elapsed >= clickStart && elapsed < clickStart + 140 ? .85 : 1;
+        cursor.style.transform = `translate(${startX + (endX - startX) * ease}px, ${startY + (endY - startY) * ease}px) scale(${scale})`;
+      }
+    }
+    if (!recording) return;
+    const time = elapsed - recordingStart;
+    setText(recordingTitle, time < 2500 ? 'New note' : 'Product team sync');
+    setText(recordingTime, `00:${String(Math.floor(time / 1000)).padStart(2, '0')}`);
+    placeholder.hidden = time >= 2800;
+    noteList.hidden = time < 2800;
+    setText(noteLines[0], typed('Simpler onboarding. Focus on the first five minutes.', time, 2800));
+    noteLines[1].hidden = time < 7600;
+    setText(noteLines[1], typed('Test on Friday · Jamie → first draft', time, 7600));
+    listening.hidden = time >= transcript[0].start;
+    let changed = false;
+    turns.forEach((turn, index) => {
+      const line = transcript[index];
+      const text = typed(line.text, time, line.start);
+      turn.hidden = time < line.start;
+      const bubble = turn.querySelector('p');
+      if (bubble.textContent !== text) {
+        setText(bubble, text);
+        changed = true;
+      }
+    });
+    if (changed) conversation.scrollTop = conversation.scrollHeight;
+    const wave = appWindow.querySelector('.recording-wave');
+    [...wave.children].forEach((bar, index) => {
+      bar.style.height = `${4 + Math.abs(Math.sin(time / 230 + index * 1.4)) * 13}px`;
+    });
+  }
+  // Manual interaction stops playback and leaves the selected view in place.
   function chooseTab(index) {
-    selectTab(index);
-    step = Math.max(0, sequence.findIndex(item => item.tab === index));
     elapsed = 0;
     paused = true;
+    selectTab(index);
+    renderDemo();
     updatePause();
   }
   tabs.forEach((tab, index) => {
@@ -56,20 +129,42 @@ const GITHUB_URL = '';   // Public repository URL, e.g. https://github.com/<user
       tabs[next].focus();
     });
   });
-  pauseButton.addEventListener('click', () => { paused = !paused; elapsed = 0; updatePause(); });
-  motionPreference.addEventListener('change', event => { paused = event.matches; updatePause(); });
+  newNoteButtons.forEach(button => button.addEventListener('click', () => {
+    elapsed = recordingStart + 12000;
+    paused = true;
+    renderDemo();
+    updatePause();
+    appWindow.querySelector('.demo-close-recording').focus({ preventScroll: true });
+  }));
+  function closeRecording() {
+    const restoreFocus = overlay.contains(document.activeElement);
+    chooseTab(1);
+    if (restoreFocus) newNoteButtons.find(button => button.getClientRects().length)?.focus({ preventScroll: true });
+  }
+  appWindow.querySelector('.demo-close-recording').addEventListener('click', closeRecording);
+  appWindow.querySelector('.demo-stop-recording').addEventListener('click', closeRecording);
+  appWindow.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && !overlay.hidden) {
+      event.preventDefault();
+      closeRecording();
+    }
+  });
+  pauseButton.addEventListener('click', () => { paused = !paused; lastFrame = performance.now(); updatePause(); });
+  motionPreference.addEventListener('change', event => { paused = event.matches; lastFrame = performance.now(); updatePause(); });
+  renderDemo();
   updatePause();
 
-  // No network requests or AI calls: all demo content is fictional and local.
-  // Playback waits while the page is hidden or keyboard focus is inside the app demo.
-  window.setInterval(() => {
-    if (paused || document.hidden || appWindow.contains(document.activeElement)) return;
-    elapsed += 1;
-    if (elapsed < sequence[step].seconds) return;
-    elapsed = 0;
-    step = (step + 1) % sequence.length;
-    selectTab(sequence[step].tab);
-  }, 1000);
+  // All content is fictional and local. Hidden pages and keyboard focus suspend playback.
+  function animate(now) {
+    const delta = now - lastFrame;
+    lastFrame = now;
+    if (!paused && !document.hidden && !appWindow.contains(document.activeElement)) {
+      elapsed = (elapsed + Math.min(delta, 100)) % cycleDuration;
+      renderDemo();
+    }
+    window.requestAnimationFrame(animate);
+  }
+  window.requestAnimationFrame(animate);
 
   // Download and GitHub links.
   function safeUrl(value, name) {

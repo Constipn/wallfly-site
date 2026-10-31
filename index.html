@@ -44,7 +44,7 @@
           <div class="app-body">
             <aside class="app-sidebar" aria-label="Demo workspace">
               <div class="demo-brand"><img src="assets/wallfly-icon.png" width="15" height="15" alt="">Wallfly AI</div>
-              <div class="demo-new-note"><span aria-hidden="true">＋</span> New note <kbd>⌘N</kbd></div>
+              <button class="demo-new-note" type="button" aria-controls="demo-recording"><span aria-hidden="true">＋</span> New Note <kbd>⌘N</kbd></button>
               <div class="sidebar-link selected"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="7" width="16" height="14" rx="2"/><path d="M6 4h12M8 1h8"/></svg> Meetings</div>
               <div class="sidebar-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="6" r="2"/><circle cx="5" cy="17" r="2"/><path d="M11 6h10M11 17h10"/></svg> My to-dos</div>
               <div class="sidebar-label">FOLDERS <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7V5a1 1 0 0 1 1-1h5l2 2h9a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7Z"/><path d="M3 9h18"/></svg></div>
@@ -63,7 +63,7 @@
               <div class="meeting-item"><strong>Roadmap &amp; next milestones</strong><time datetime="2026-10-20T11:00">October 20, 11:00</time><span class="meeting-folder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7V5a1 1 0 0 1 1-1h5l2 2h9a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7Z"/><path d="M3 9h18"/></svg> Product</span></div>
             </div>
             <div class="app-content">
-              <div class="preview-label">Preview</div>
+              <div class="preview-label">Preview<button class="demo-new-note-mobile" type="button" aria-controls="demo-recording">＋ New Note</button></div>
               <div class="preview-document">
                 <div class="meeting-meta"><time datetime="2026-10-23T10:30">October 23, 10:30</time></div>
                 <h2>Onboarding design review</h2>
@@ -89,6 +89,28 @@
               </div>
             </div>
           </div>
+          <div class="demo-recording-overlay" hidden>
+            <section id="demo-recording" class="demo-recording" aria-labelledby="demo-recording-title">
+              <div class="recording-toolbar"><span><img src="assets/wallfly-icon.png" width="14" height="14" alt=""> Wallfly AI</span><button class="demo-close-recording" type="button" aria-label="Close recording demo">×</button></div>
+              <div class="recording-document">
+                <div class="recording-meta">Today <span>Saved on your computer</span></div>
+                <h2 id="demo-recording-title">New note</h2>
+                <div class="recording-note-tabs"><span>My Notes</span><span>Enhanced Notes</span></div>
+                <div class="recording-notes"><p class="recording-placeholder">Capture thoughts and notes…</p><ul hidden><li></li><li hidden></li></ul></div>
+              </div>
+              <div class="recording-transcript" role="region" aria-label="Illustrative live transcript">
+                <div class="recording-transcript-heading"><strong>Transcript</strong><span><i></i> Live</span></div>
+                <div class="recording-conversation">
+                  <p class="recording-listening">Listening to your meeting…</p>
+                  <div class="recording-turn" hidden><span>Jamie</span><p></p></div>
+                  <div class="recording-turn recording-turn-me" hidden><span>You</span><p></p></div>
+                  <div class="recording-turn" hidden><span>Jamie</span><p></p></div>
+                </div>
+              </div>
+              <div class="recording-bar"><span class="recording-indicator"><i></i> Recording <time>00:00</time></span><span class="recording-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><button class="demo-stop-recording" type="button"><span aria-hidden="true">■</span> Stop recording</button></div>
+            </section>
+          </div>
+          <svg class="demo-cursor" viewBox="0 0 28 34" width="23" height="28" aria-hidden="true" hidden><path d="M3 2v25l6-6 5 11 5-2-5-10h10Z" fill="#25282c" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/></svg>
         </div>
         <div class="demo-footer"><span>Illustrative demo with fictional content</span><button id="pause-demo" type="button" aria-pressed="false"><span aria-hidden="true">Ⅱ</span> Pause demo</button></div>
       </div>
