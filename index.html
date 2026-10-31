@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f9f8f6">
-  <meta name="description" content="Wallfly AI is your free, open-source meeting notetaker for Mac. No subscription. Store meeting files locally. Bring your own AI key or run local models.">
-  <meta property="og:title" content="Wallfly AI — Be in the conversation.">
-  <meta property="og:description" content="Free and open source. No subscription. Meeting files stored on your Mac. Bring your own AI key or run local models.">
+  <meta name="description" content="Wallfly is a free, open-source AI meeting notetaker for Mac. No bot joins your call, your notes stay on your Mac, and you can use your own AI or run it fully offline.">
+  <meta property="og:title" content="Wallfly AI — Free AI meeting notes that stay on your Mac">
+  <meta property="og:description" content="Free and open source. No bot in your call. Notes stored on your Mac. Use your own AI, or run it fully offline.">
   <meta property="og:type" content="website">
-  <title>Wallfly AI — Be in the conversation.</title>
+  <title>Wallfly AI — Free AI meeting notes for Mac</title>
   <link rel="icon" href="assets/wallfly.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
@@ -17,20 +17,29 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header wrap">
     <a class="brand" href="#" aria-label="Wallfly AI home"><img src="assets/wallfly.svg" width="34" height="34" alt="">wallfly<span>AI</span></a>
-    <nav aria-label="Main navigation"><a href="#why-wallfly">Why Wallfly</a><a href="#how-it-works">How it works</a><a class="nav-download" href="#download">Get it for Mac <span aria-hidden="true">↗</span></a></nav>
+    <nav aria-label="Main navigation"><a href="#how-it-works">How it works</a><a href="#privacy">Privacy</a><a href="#faq">FAQ</a><a class="js-github" hidden>GitHub</a><a class="nav-download" href="#download">Get it for Mac <span aria-hidden="true">↓</span></a></nav>
   </header>
   <main id="main">
     <section class="hero wrap" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="status-dot"></span> A little less typing. A lot more listening.</p>
-        <h1 id="hero-title">Your AI-Meeting-Notetaker,<br>so you can focus on your calls <em>without a Meeting-Bot.</em></h1>
-        <p class="hero-promise">Free. Open source. No subscription.</p>
-        <p class="hero-description">Stay in the conversation. Wallfly captures the details and turns your rough notes into something useful. Quietly, on your Mac.</p>
-        <a class="button" href="#download"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.7 12.8c0-2 1.6-3 1.7-3.1-1-1.5-2.5-1.7-3-1.7-1.3-.1-2.5.8-3.2.8-.6 0-1.6-.8-2.7-.8-1.4 0-2.8.9-3.6 2.2-1.5 2.7-.4 6.7 1.1 8.8.7 1 1.5 2.1 2.6 2 1.1 0 1.5-.7 2.9-.7 1.3 0 1.7.7 2.8.7 1.2 0 1.9-1 2.6-2 .8-1.1 1.1-2.2 1.1-2.3-.1 0-2.3-.9-2.3-3.9ZM14.5 6.6c.6-.8 1-1.9.9-3-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-1 2.8 1 .1 2.1-.5 2.8-1.2Z"/></svg>Download for Mac <span aria-hidden="true">↗</span></a>
-        <p class="button-note">Bring your own key, or run local models.</p>
+        <p class="hero-badge"><span class="status-dot"></span> Open source · Free · for macOS</p>
+        <h1 id="hero-title">Free AI meeting notes<br><em>that stay on your&nbsp;Mac.</em></h1>
+        <p class="hero-description">Wallfly listens to your Teams, Google Meet and Zoom calls without a bot joining, and turns them into summaries, decisions and to-dos. Use your own AI, or run it fully offline.</p>
+        <div class="cta-row">
+          <a class="button js-download" hidden download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.7 12.8c0-2 1.6-3 1.7-3.1-1-1.5-2.5-1.7-3-1.7-1.3-.1-2.5.8-3.2.8-.6 0-1.6-.8-2.7-.8-1.4 0-2.8.9-3.6 2.2-1.5 2.7-.4 6.7 1.1 8.8.7 1 1.5 2.1 2.6 2 1.1 0 1.5-.7 2.9-.7 1.3 0 1.7.7 2.8.7 1.2 0 1.9-1 2.6-2 .8-1.1 1.1-2.2 1.1-2.3-.1 0-2.3-.9-2.3-3.9ZM14.5 6.6c.6-.8 1-1.9.9-3-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-1 2.8 1 .1 2.1-.5 2.8-1.2Z"/></svg>Download for Mac <span aria-hidden="true">↓</span></a>
+          <a class="button button-secondary js-github" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>View on GitHub</a>
+          <span class="coming-soon js-coming-soon">Mac download coming soon</span>
+        </div>
+        <p class="button-note">Free · For Apple Silicon Macs with macOS 26 or later</p>
+        <ul class="trust-row" aria-label="Key facts">
+          <li>No bot in your call</li>
+          <li>Stored on your Mac</li>
+          <li>No subscription</li>
+          <li>Can run fully offline</li>
+        </ul>
       </div>
       <div class="hero-product">
-        <div class="product-caption"><span class="tiny-star" aria-hidden="true">✳</span> Your notes, with a little more context.</div>
+        <div class="product-caption"><span class="tiny-star" aria-hidden="true">✳</span> Your rough notes in. Clear meeting notes out.</div>
         <div class="app-window" role="group" aria-label="Interactive Wallfly app demo with fictional meeting content">
           <div class="app-body">
             <aside class="app-sidebar" aria-label="Demo workspace">
@@ -74,59 +83,131 @@
                     <h3>Topics and insights</h3><h4>A clearer first impression</h4><ul><li>Keep the first steps focused and easy to follow.</li><li>Jamie will prepare a first draft for the team.</li></ul>
                   </div>
                   <div id="transcript-panel" role="tabpanel" aria-labelledby="transcript-tab" tabindex="0" hidden>
-                    <h3>Transcript</h3><p><strong>Jamie</strong><br>Let's make the first five minutes feel effortless.</p><p><strong>Alex</strong><br>Agreed. We can try the updated flow together on Friday.</p><p class="demo-transcript-line"><strong>Jamie</strong><br><span id="transcript-text">I'll put together a first draft of the new flow.</span></p>
+                    <h3>Transcript</h3><p><strong>Jamie</strong><br>Let's make the first five minutes feel effortless.</p><p><strong>Alex</strong><br>Agreed. We can try the updated flow together on Friday.</p><p class="demo-transcript-line"><strong>Jamie</strong><br>I'll put together a first draft of the new flow.</p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="demo-footer"><span>Illustrative demo · Your meetings stay yours.</span><button id="pause-demo" type="button" aria-pressed="false"><span aria-hidden="true">Ⅱ</span> Pause demo</button></div>
+        <div class="demo-footer"><span>Illustrative demo with fictional content</span><button id="pause-demo" type="button" aria-pressed="false"><span aria-hidden="true">Ⅱ</span> Pause demo</button></div>
       </div>
     </section>
     <section class="compatibility wrap" aria-label="Compatible meeting apps">
-      <span>Same calls. A little more presence.</span>
+      <span>Works with the call apps you already use. No bot needed.</span>
       <div class="platforms">
         <span><img class="platform-logo" src="assets/microsoft-teams.svg" width="24" height="24" alt="">Microsoft Teams</span>
         <span><img class="platform-logo" src="assets/google-meet.svg" width="24" height="24" alt="">Google Meet</span>
         <span><img class="platform-wordmark" src="assets/zoom.png" width="62" height="14" alt="Zoom"></span>
       </div>
     </section>
-    <section class="benefits wrap section-space" id="why-wallfly" aria-labelledby="benefits-title">
-      <div class="section-heading"><p class="eyebrow">LESS IN THE WAY. MORE IN YOUR CONTROL.</p><h2 id="benefits-title">A fly on the wall.<br><em>Not another face in the meeting.</em></h2><p>Good notes shouldn't need a guest invite, a subscription,<br class="desktop-break"> or a new home for all your conversations.</p></div>
-      <div class="benefit-grid">
-        <article><span class="feature-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19v3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><rect x="9" y="2" width="6" height="13" rx="3"/></svg></span><h3>No bot. No awkward introductions.</h3><p>Capture your Mac's meeting audio without inviting a bot. Works with Teams, Google Meet and Zoom.</p></article>
-        <article><span class="feature-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10 16h.01"/><path d="M2.212 11.577a2 2 0 0 0-.212.896V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5.527a2 2 0 0 0-.212-.896L18.55 5.11A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/><path d="M21.946 12.013H2.054"/><path d="M6 16h.01"/></svg></span><h3>Stored on your Mac. Not in the cloud.</h3><p>Notes, transcripts and meeting files stay in a local library on your Mac. No Wallfly cloud storage.</p></article>
-        <article><span class="feature-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"/><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"/></svg></span><h3>Your key. Or your local model.</h3><p>Bring your own API key to use your preferred AI provider, or run local models on your Mac. You choose how your meetings are processed.</p><small>Cloud providers may charge for API usage.</small></article>
-      </div>
-    </section>
-    <section class="ownership wrap" aria-labelledby="ownership-title">
-      <div class="ownership-intro"><p class="eyebrow">FREE APP. FULL CONTROL.</p><h2 id="ownership-title">Your notes.<br><em>No monthly bill.</em></h2><p>A meeting notetaker without another subscription. Wallfly is free and open source, with your files and AI choices in your hands.</p></div>
-      <dl class="ownership-facts">
-        <div><dt>Free. No subscription.</dt><dd>No recurring Wallfly fee. Just a free app for your Mac.</dd></div>
-        <div><dt>Open source.</dt><dd>Code you can inspect, learn from and contribute to.</dd></div>
-        <div><dt>Local files.</dt><dd>Your notes, transcripts and meeting files are stored on your Mac, not in Wallfly's cloud.</dd></div>
-        <div><dt>Your AI. Your choice.</dt><dd>Use your own API key or local models. Cloud providers may charge for API usage.</dd></div>
-      </dl>
-    </section>
     <section class="workflow wrap section-space" id="how-it-works" aria-labelledby="workflow-title">
-      <div class="workflow-copy"><p class="eyebrow">FROM A FEW WORDS TO THE FULL PICTURE</p><h2 id="workflow-title">You bring the thoughts.<br><em>We'll help with the details.</em></h2><ol class="steps"><li><span>01</span><div><h3>Start your call. Stay present.</h3><p>Open Wallfly and capture the conversation on your Mac. No bot joins your meeting.</p></div></li><li><span>02</span><div><h3>Jot down what matters to you.</h3><p>A name, a question, a half-finished thought. Your notes give the meeting a personal perspective.</p></div></li><li><span>03</span><div><h3>Turn your notes into next steps.</h3><p>Enhance your notes with the transcript for clear summaries, decisions and action items.</p></div></li></ol></div>
-      <aside class="local-card"><div class="local-card-top"><span class="local-pill"><i></i> LOCAL MODE</span><svg class="laptop" viewBox="0 0 240 160" fill="none" aria-hidden="true"><rect x="43" y="18" width="154" height="108" rx="8"/><rect x="52" y="27" width="136" height="90" rx="2"/><path d="M43 126 22 140c-3 2-1 6 3 6h190c4 0 6-4 3-6l-21-14M99 127l-5 7h52l-5-7"/><path class="laptop-mark" d="m105 71 10 10 23-25"/></svg><h3>Stored on your Mac.<br>Not in the cloud.</h3><p>Your meeting files are saved locally. For local processing too, run transcription with OpenWhispr and use a local, OpenAI-compatible model for Enhanced Notes.</p></div><div class="local-card-bottom"><span aria-hidden="true">↗</span><p><strong>100% local is your choice.</strong><br>If you choose a cloud AI provider, relevant audio or text is sent to that provider for processing. Local models need an initial download.</p></div></aside>
+      <div class="section-heading"><p class="eyebrow">HOW IT WORKS</p><h2 id="workflow-title">From your call to clear notes.<br><em>In three steps.</em></h2></div>
+      <ol class="steps">
+        <li><span>01</span><div><h3>Start your call.</h3><p>Open Wallfly when your meeting starts. It captures the audio on your Mac. No bot joins, nobody gets an extra invite.</p></div></li>
+        <li><span>02</span><div><h3>Jot down what matters.</h3><p>A name, a question, a half-finished thought. Your notes tell the AI what is important to you.</p></div></li>
+        <li><span>03</span><div><h3>Get clear notes.</h3><p>Wallfly combines your notes with the transcript into a summary, decisions and to-dos.</p></div></li>
+      </ol>
     </section>
-    <section class="download-section" id="download" aria-labelledby="download-title"><div class="wrap download-inner"><div><p class="eyebrow">A LITTLE HELP. A LOT MORE HEADSPACE.</p><h2 id="download-title">Be in the conversation.<br><em>Take the good notes home.</em></h2></div><div class="download-action"><span class="coming-soon" id="download-status">Mac download coming soon</span><a class="button" id="release-download" hidden download>Download for Mac <span aria-hidden="true">↓</span></a><p>For macOS 26 or later.<br><strong>Free and open source. No subscription.</strong><br>Bring your own key, or run local models.</p></div></div></section>
-    <section class="faq wrap section-space" id="faq" aria-labelledby="faq-title">
-      <div class="section-heading"><p class="eyebrow">A FEW MORE DETAILS</p><h2 id="faq-title">Frequently asked questions.</h2></div>
-      <div class="faq-item">
-        <h3>Which transcription and summary models can I use?</h3>
-        <p><strong>Transcription:</strong> Deepgram (Nova-3), OpenAI, or Whisper Large V3 Turbo running locally through OpenWhispr.</p>
-        <p><strong>Summaries and Enhanced Notes:</strong> OpenAI, Anthropic (Claude), or a custom OpenAI-compatible API, including local models. Bring your own key; cloud providers may charge for usage.</p>
+    <section class="benefits wrap section-space" id="why-wallfly" aria-labelledby="benefits-title">
+      <div class="section-heading"><p class="eyebrow">WHY WALLFLY</p><h2 id="benefits-title">A fly on the wall.<br><em>Not another face in the meeting.</em></h2><p>Many AI notetakers send a bot into your call, keep your meetings in their cloud and charge every month. Wallfly does none of that.</p></div>
+      <div class="benefit-grid">
+        <article><span class="feature-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19v3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><rect x="9" y="2" width="6" height="13" rx="3"/></svg></span><h3>No bot in your call.</h3><p>Wallfly captures your Mac's meeting audio. No bot joins, no awkward introductions. Works with Teams, Google Meet and Zoom.</p></article>
+        <article><span class="feature-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10 16h.01"/><path d="M2.212 11.577a2 2 0 0 0-.212.896V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5.527a2 2 0 0 0-.212-.896L18.55 5.11A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/><path d="M21.946 12.013H2.054"/><path d="M6 16h.01"/></svg></span><h3>Stored on your Mac.</h3><p>Notes, transcripts and meeting files live in a local library on your laptop. No Wallfly cloud storage.</p></article>
+        <article><span class="feature-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg></span><h3>Free and open source.</h3><p>No subscription, no paywall. The code is public, so anyone can check what Wallfly does.</p></article>
+        <article><span class="feature-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"/><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"/></svg></span><h3>Your AI, or fully offline.</h3><p>Use your own OpenAI, Anthropic or Deepgram API key, or run local models on your Mac without internet.</p></article>
       </div>
-      <div class="faq-item">
-        <h3>How does Wallfly detect meetings?</h3>
-        <p>When enabled, meeting detection uses macOS Accessibility to spot active Microsoft Teams calls and prompt you to take notes. For other apps, start recording manually.</p>
+    </section>
+    <section class="compare wrap section-space" id="compare" aria-labelledby="compare-title">
+      <div class="section-heading"><p class="eyebrow">COMPARED</p><h2 id="compare-title">How Wallfly is different.</h2></div>
+      <table class="compare-table">
+        <thead><tr><th scope="col"><span class="visually-hidden">Feature</span></th><th scope="col">Typical AI notetaker</th><th scope="col" class="is-wallfly">Wallfly</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Price</th><td>Monthly subscription</td><td class="is-wallfly">Free</td></tr>
+          <tr><th scope="row">Bot joins your call</th><td>Often</td><td class="is-wallfly">Never</td></tr>
+          <tr><th scope="row">Where your notes live</th><td>The vendor's cloud</td><td class="is-wallfly">On your Mac</td></tr>
+          <tr><th scope="row">Which AI processes your meetings</th><td>The vendor decides</td><td class="is-wallfly">You decide, or fully offline</td></tr>
+          <tr><th scope="row">Source code</th><td>Closed</td><td class="is-wallfly">Open source</td></tr>
+        </tbody>
+      </table>
+      <p class="compare-note">Cloud AI providers you choose may charge for usage.</p>
+    </section>
+    <section class="privacy wrap section-space" id="privacy" aria-labelledby="privacy-title">
+      <div class="section-heading"><p class="eyebrow">PRIVACY</p><h2 id="privacy-title">Always stored on your Mac.<br><em>Fully offline if you want.</em></h2><p>You decide where the AI runs. Your meeting library stays on your Mac either way.</p></div>
+      <div class="privacy-grid">
+        <article class="privacy-card is-local">
+          <p class="privacy-pill"><i></i> LOCAL MODE</p>
+          <h3>Everything runs on your Mac.</h3>
+          <dl>
+            <div><dt>Transcription</dt><dd>Whisper, running locally in the OpenWhispr app (installed separately)</dd></div>
+            <div><dt>Summaries</dt><dd>A local model on your Mac, connected as a custom OpenAI-compatible API</dd></div>
+            <div><dt>Your meeting data</dt><dd>Stays on your Mac. Internet is only needed to download the models once.</dd></div>
+            <div><dt>Cost</dt><dd>Free</dd></div>
+          </dl>
+        </article>
+        <article class="privacy-card">
+          <p class="privacy-pill"><i></i> CLOUD MODE</p>
+          <h3>Your own key, your choice of provider.</h3>
+          <dl>
+            <div><dt>Transcription</dt><dd>Deepgram or OpenAI</dd></div>
+            <div><dt>Summaries</dt><dd>OpenAI, Anthropic (Claude) or another OpenAI-compatible API</dd></div>
+            <div><dt>Your meeting data</dt><dd>Stored on your Mac. The audio or text needed for processing is sent to the provider you chose.</dd></div>
+            <div><dt>Cost</dt><dd>Wallfly stays free. Your provider bills you for usage.</dd></div>
+          </dl>
+        </article>
+      </div>
+    </section>
+    <section class="faq wrap section-space" id="faq" aria-labelledby="faq-title">
+      <div class="section-heading"><p class="eyebrow">FAQ</p><h2 id="faq-title">Frequently asked questions.</h2></div>
+      <details class="faq-item" open>
+        <summary>Is Wallfly really free?</summary>
+        <p>Yes. The app is free and open source, with no subscription. The only possible cost: if you choose a cloud AI provider such as OpenAI or Deepgram, that provider bills you for usage. With local models, it costs nothing.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Does it work completely offline?</summary>
+        <p>Yes, in local mode. Transcription runs locally in the OpenWhispr app (installed separately), and summaries run on a local model on your Mac. You only need internet once, to download the models.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Where are my notes stored?</summary>
+        <p>In a local library on your Mac: notes, transcripts and meeting files. Wallfly has no cloud storage.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do other participants notice? Do I need their consent?</summary>
+        <p>No bot joins, so nothing shows up in the call. Rules for recording differ by country and company, so let people know you are taking notes.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Does it work with Zoom and Google Meet?</summary>
+        <p>Yes. Wallfly captures your Mac's meeting audio, so it works with Microsoft Teams, Google Meet and Zoom. Automatic meeting detection currently works for Teams (through macOS Accessibility). For other apps, start recording manually.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Which transcription and summary models can I use?</summary>
+        <p><strong>Transcription:</strong> Deepgram (Nova-3), OpenAI, or Whisper Large V3 Turbo running locally through OpenWhispr.</p>
+        <p><strong>Summaries and Enhanced Notes:</strong> OpenAI, Anthropic (Claude), or any OpenAI-compatible API, including local models. Bring your own key; cloud providers may charge for usage.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Which Macs are supported?</summary>
+        <p>Wallfly needs a Mac with Apple Silicon (M1 or newer) and macOS 26 or later. There is no Windows or Linux version.</p>
+      </details>
+    </section>
+    <section class="download-section" id="download" aria-labelledby="download-title">
+      <div class="wrap download-inner">
+        <div><p class="eyebrow">GET WALLFLY</p><h2 id="download-title">Try it on your next call.<br><em>Free and open source.</em></h2></div>
+        <div class="download-action">
+          <div class="cta-row">
+            <a class="button js-download" hidden download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.7 12.8c0-2 1.6-3 1.7-3.1-1-1.5-2.5-1.7-3-1.7-1.3-.1-2.5.8-3.2.8-.6 0-1.6-.8-2.7-.8-1.4 0-2.8.9-3.6 2.2-1.5 2.7-.4 6.7 1.1 8.8.7 1 1.5 2.1 2.6 2 1.1 0 1.5-.7 2.9-.7 1.3 0 1.7.7 2.8.7 1.2 0 1.9-1 2.6-2 .8-1.1 1.1-2.2 1.1-2.3-.1 0-2.3-.9-2.3-3.9ZM14.5 6.6c.6-.8 1-1.9.9-3-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-1 2.8 1 .1 2.1-.5 2.8-1.2Z"/></svg>Download for Mac <span aria-hidden="true">↓</span></a>
+            <a class="button button-secondary js-github" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>View on GitHub</a>
+            <span class="coming-soon js-coming-soon">Mac download coming soon</span>
+          </div>
+          <p>Apple Silicon · macOS 26 or later · No subscription<br>Use your own AI, or run it fully offline.</p>
+        </div>
       </div>
     </section>
   </main>
-  <footer class="site-footer wrap"><a class="brand" href="#" aria-label="Wallfly AI home"><img src="assets/wallfly.svg" width="28" height="28" alt="">wallfly<span>AI</span></a><span>A quiet corner for your conversations.</span><small>Made for Mac. Made for your peace of mind.</small></footer>
+  <footer class="site-footer wrap">
+    <a class="brand" href="#" aria-label="Wallfly AI home"><img src="assets/wallfly.svg" width="28" height="28" alt="">wallfly<span>AI</span></a>
+    <span>Free, open-source AI meeting notes for Mac.</span>
+    <nav class="footer-links" aria-label="Footer"><a href="#how-it-works">How it works</a><a href="#privacy">Privacy</a><a href="#faq">FAQ</a><a class="js-github" hidden>GitHub</a></nav>
+    <!-- TODO before going public: add license, contact, Impressum and privacy policy (Datenschutzerklärung) links. -->
+  </footer>
 </body>
 </html>
