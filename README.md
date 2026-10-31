@@ -33,6 +33,8 @@ The demo opens on Enhanced Notes, matching the app's document preview. It then p
 
 ## Product copy
 
+The page copy is platform-neutral ("stored on your computer"), because a Windows version is planned. Only the download button and availability notes name the Mac, since the current release is Mac-only. When a Windows build exists, add a second download button and update the availability notes and the "Which computers are supported?" FAQ.
+
 The app is free and open source, with no Wallfly subscription; optional API services can charge usage fees. Meeting files are stored locally. Fully local processing requires local OpenWhispr transcription and a local OpenAI-compatible enhancement model; initial model downloads require connectivity. Choosing a cloud provider sends relevant audio or text to that provider. The landing page itself makes no external requests.
 
 ## Icons
