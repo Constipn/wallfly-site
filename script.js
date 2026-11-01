@@ -33,11 +33,12 @@ const GITHUB_URL = 'https://github.com/Constipn/wallflyAI';   // Public reposito
     { start: 4000, text: 'Agreed. We can test the updated flow together on Friday.' },
     { start: 7500, text: "I’ll put together a first draft of the new flow." }
   ];
-  // Overview for 2 s, pointer movement and click, then the live recording window.
+  // Overview, pointer click, live recording, then 5.5 s of finished Enhanced Notes.
   const pointerStart = 2000;
   const clickStart = 2900;
   const recordingStart = 3150;
-  const cycleDuration = recordingStart + 15000;
+  const resultStart = recordingStart + 15000;
+  const cycleDuration = resultStart + 5500;
   let elapsed = 0;
   let lastFrame = performance.now();
   let transcriptExpanded = null;
@@ -79,8 +80,13 @@ const GITHUB_URL = 'https://github.com/Constipn/wallflyAI';   // Public reposito
     transcriptContent.setAttribute('aria-hidden', String(!expanded));
   }
   function renderDemo() {
-    const recording = elapsed >= recordingStart;
+    const result = !manualRecording && elapsed >= resultStart;
+    const recording = elapsed >= recordingStart && !result;
     const wasRecording = !overlay.hidden;
+    appWindow.classList.toggle('is-result', result);
+    if (result && wasRecording) selectTab(1);
+    setText(appWindow.querySelector('.preview-document h2'), result ? 'Product team sync' : 'Onboarding design review');
+    setText(product.querySelector('.demo-footer > span'), result ? 'Enhanced Notes · Summary, decisions & to-dos' : 'Illustrative demo with fictional content');
     overlay.hidden = !recording;
     appBody.inert = recording;
     if (recording && !wasRecording) {
@@ -89,9 +95,9 @@ const GITHUB_URL = 'https://github.com/Constipn/wallflyAI';   // Public reposito
     }
     newNoteButtons.forEach(button => {
       button.setAttribute('aria-expanded', String(recording));
-      button.classList.toggle('demo-clicked', elapsed >= clickStart && !recording);
+      button.classList.toggle('demo-clicked', elapsed >= clickStart && !recording && !result);
     });
-    const moving = elapsed >= pointerStart && !recording;
+    const moving = elapsed >= pointerStart && !recording && !result;
     cursor.hidden = !moving;
     if (moving) {
       const button = newNoteButtons.find(button => button.getClientRects().length);
