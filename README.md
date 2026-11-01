@@ -39,6 +39,8 @@ The page copy is platform-neutral ("stored on your computer"), because a Windows
 
 The app is free and open source, with no Wallfly subscription; optional API services can charge usage fees. Meeting files are stored locally. Fully local processing requires local OpenWhispr transcription and a local OpenAI-compatible enhancement model; initial model downloads require connectivity. Choosing a cloud provider sends relevant audio or text to that provider. The landing page itself makes no external requests.
 
+Wallfly includes implemented support for the Model Context Protocol (MCP), allowing integration with MCP-compatible AI tools and workflows. This is highlighted in the AI benefit card and FAQ.
+
 ## Icons
 
 The four benefit icons (mic, hard-drive, code-xml and key-round) are inline SVGs from [Lucide](https://lucide.dev), styled to match the page. Their license is included in `assets/lucide-LICENSE.txt`. No icon CDN or runtime dependency is used.
