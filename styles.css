@@ -996,6 +996,30 @@ em {
   line-height:1.9;
 }
 
+.install-note,
+.download-action .install-note {
+  max-width:460px;
+  margin:14px 0 0;
+  padding:10px 14px;
+  background:var(--rose);
+  border-left:3px solid var(--red);
+  border-radius:6px;
+  font-size:13px;
+  line-height:1.5;
+  color:var(--ink);
+  text-align:left;
+}
+
+.download-action .install-note {
+  margin:16px auto 0;
+}
+
+.install-note a {
+  color:var(--red);
+  font-weight:600;
+  text-decoration:underline;
+}
+
 .faq>.section-heading,.faq-item {
   max-width:850px;
 }

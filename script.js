@@ -248,4 +248,9 @@ const GITHUB_URL = 'https://github.com/Constipn/wallflyAI';   // Public reposito
     // Without a download yet, GitHub becomes the main action.
     if (!download) link.classList.remove('button-secondary');
   });
+  // Install steps live in the GitHub README (#download); shown next to every download button.
+  document.querySelectorAll('.js-install-note').forEach(note => { note.hidden = !(download && github); });
+  document.querySelectorAll('.js-install-link').forEach(link => {
+    if (github) link.href = `${github.replace(/\/$/, '')}#download`;
+  });
 })();
