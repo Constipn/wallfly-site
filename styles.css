@@ -291,8 +291,8 @@ em {
   --demo-soft:#f7f7f8;
   --demo-line:#e3e4e7;
   --demo-muted:#777b82;
-  --folder-product:#626b75;
-  --folder-design:#858b94;
+  --folder-product:#2563eb;
+  --folder-design:#9333ea;
   position:relative;
   background:var(--demo-paper);
   border:1px solid #e0e1e4;
@@ -559,8 +559,8 @@ em {
 
 .demo-assigned-folder {
   color:var(--folder-product);
-  background:#f1f3f5;
-  border-color:#dfe3e7;
+  background:#eff6ff;
+  border-color:#bfdbfe;
 }
 
 .folder-design {
@@ -568,8 +568,8 @@ em {
 }
 
 .demo-assigned-folder.folder-design {
-  background:#f5f5f6;
-  border-color:#e3e4e7;
+  background:#faf5ff;
+  border-color:#e9d5ff;
 }
 
 .demo-edit {

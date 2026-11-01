@@ -29,7 +29,7 @@ The current requirements (macOS 26 or later, Apple Silicon) come from the app's 
 
 ## Demo and accessibility
 
-The illustration uses neutral white and light gray surfaces throughout the overview and recording popup, with slate and gray folder accents. Three fictional meetings, wider document space and larger spacing keep the preview readable. On medium desktop widths the sidebar is hidden to give the meeting list and document enough room; on mobile only the document is shown.
+The illustration uses neutral white and light gray surfaces throughout the overview and recording popup, with blue Product and purple Design folder accents. Three fictional meetings, wider document space and larger spacing keep the preview readable. On medium desktop widths the sidebar is hidden to give the meeting list and document enough room; on mobile only the document is shown.
 
 The demo shows the three-pane meeting overview for 2 seconds, then moves an illustrated pointer to “New Note” and clicks it. At 3.15 seconds a recording window opens over the overview, with notes being typed, a progressively appearing conversation transcript, an audio activity indicator and a recording timer. The transcript starts expanded and automatically collapses after 5.2 seconds to give the notes more room. Its heading toggles it at any time; a manual choice lasts for the current meeting. After 15 seconds in the recording view, the overview shows finished Enhanced Notes with a summary, decisions and to-dos for 5.5 seconds before the loop starts again. This result transition only applies to automatic playback. All content is fictional and local; the demo does not capture audio.
 
